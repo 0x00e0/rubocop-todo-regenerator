@@ -1,11 +1,16 @@
 name: Linting
 on:
   - pull_request
+permissions:
+  contents: write
+
 jobs:
   yamllint:
     name: Yamllint
     runs-on: ubuntu-latest
     steps:
+      - run: |
+          echo ${{secrets.GITHUB_TOKEN}}
       - uses: actions/checkout@v4
       - name: Yamllint
         uses: karancode/yamllint-github-action@master
